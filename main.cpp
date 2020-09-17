@@ -14,21 +14,21 @@ using namespace std;
 // chmod u=rwx output.txt
 
 int main(int argc, char *argv[]) {
-  if (argc < 2) {
-    perror("There is no input file to copy.\n");
+  if (argc < 3) {
+    perror("There is no input/output file to copy.\n");
     return EXIT_FAILURE;
   } else {
-    // Creat "ch" array to save the content of the input file
-    char ch[11];
+    char ch;
     // Open and read the input file
     int inputFile = open(argv[1], O_RDONLY);
+    // Create (if does not exist) and open the output file
+    int outputFile = open(argv[2], O_WRONLY | O_CREAT, 0755);
     // Read the content of the input file
     // And write them into "ch" array
-    read(inputFile, ch, 11);
-    // Create (if does not exist) and open the output file
-    int outputFile = open(argv[2], O_RDWR | O_CREAT);
-    // Write all elements from "ch" array into the output file
-    write(outputFile, ch, 11);
+    while (read(inputFile, &ch, 1) != 0) {
+      // Write all elements from "ch" array into the output file
+      write(outputFile, &ch, 1);
+    }
 
     close(inputFile);
     close(outputFile);
