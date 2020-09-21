@@ -1,19 +1,42 @@
-Members: Quang Nguyen
-	 Vinh Tran
-CPSC 351-04
-Professor: Kenytt Avery
-Project: File Copy Reversed
+# Members: Quang Nguyen
+	   Vinh Tran
 
+# CPSC 351-04
 
-Summary: The program is designed to take the content of a file and then reverse the content and copy it to another file using only system call. If the output file is
-not exist, the program will create one.
+# Professor: Kenytt Avery
 
-Documenting: The program will take in three argument, the name of the program, the name of the file to reverse and the file to copy to. If the user fail to provide, 
-an error will be called. After that, the variable inputFile and outputFile is created to store the input file and output file using the system call open(). A variable
-countChar is also created to store the number of character in the input file by using the system call lseek(). The program will enter a for loop and use the read()
-and write() system call to start copying the content from the input file to the output file. However, by using the lseek(), the program can relocate the cursor to the
-end of the input file and start copying.
+# Project 1: File Copy Reversed
 
-How to use the program: First, the user will need to compile the code by implementing this line in the kernel mode "g++ main.cpp -o main". Second, the user need to make
-sure that there is already an input file existed in the PC since the program can only create the output file, and it will throw error if it can not find the input file. 
-Third, the user input this line to use the program "./main 'nameOfTheInputFile.txt' 'nameOfTheOutputFile.txt'".
+## Summary: 
+
+The program is designed to copy and reverse the content of a source file and copy it to a destination file using system calls. 
+
+## Operation:
+ 
+If the process receives three valid arguments which are the executive file, the source file, 
+and the destination file respectively from the command line, it will continue doing its task.
+Otherwise, the error message will be displayed, and the process is terminated.
+
+## Task:
+
+1. The source file is opened, and the cursor will be moved to the end of the file. Also, there is a counter to count the
+number of characters in the content.
+2. The destination file is created (if it does not exist) and opened.
+3. Read and write the content of the source file into the destination file by reversing and copying character by character
+until reaching the value of the counter.
+4. Close the source file and the destination file.
+5. Display the message to inform the completed task.
+
+## "CPSC-351-Project1.tar.gz" Contents:
+
+1. README.txt       // This file
+2. main.cpp         // The source code of the program
+3. output.txt       // The output of the program by containing the reserved content
+
+## Compile and Run The Program:
+
+1. To compile the source code, command:
+$ c++ -o FileCopyReversed -std=c++ -Wall main.cpp     // "FileCopyReversed" is created as the executive file
+
+2. To run the code, command:
+$ ./FileCopyReversed your_source_file.txt your_destination_file.txt    // Ex: ./FileCopyReversed input.txt output.txt
