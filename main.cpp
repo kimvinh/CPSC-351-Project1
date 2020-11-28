@@ -25,15 +25,15 @@ int main(int argc, char *argv[]) {
     // Open and read the input file
     int inputFile = open(argv[1], O_RDONLY);
 
+    // Create (if does not exist) and open the destination file
+    // Users can read, write, and execute this file
+    int outputFile = open(argv[2], O_WRONLY | O_CREAT, 0700);
+
     // Move the cursor to the end of the file
     // Also, count and store the number of characters in a string of the file into "countChar"
     int countChar = lseek(inputFile, currentCursor, SEEK_END);
 
-    // Create (if does not exist) and open the output file
-    // Users can read, write, and execute this file
-    int outputFile = open(argv[2], O_WRONLY | O_CREAT, 0700);
-
-    // Reverse the content and write it to the output file until reaching the value of "countChar"
+    // Reverse the content and write it to the destination file until reaching the value of "countChar"
     for (int i = 0; i < countChar; i++) {
       char ch;
       // Move the cursor backwardly through one by one character from the end of the file

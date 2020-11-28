@@ -31,12 +31,17 @@ until reaching the value of the counter.
 
 1. README.txt       // This file
 2. main.cpp         // The source code of the program
-3. output.txt       // The output of the program by containing the reserved content
+3. output.txt       // The output of running 'strace' command
 
 ## Compile and Run The Program:
 
 1. To compile the source code, command:
 $ c++ -o FileCopyReversed -std=c++ -Wall main.cpp     // "FileCopyReversed" is created as the executive file
 
-2. To run the code, command:
-$ ./FileCopyReversed your_source_file.txt your_destination_file.txt    // Ex: ./FileCopyReversed input.txt output.txt
+2. To run the program by only copying and writing the reversed contents of the input file into the 
+destination file, command:
+$ ./FileCopyReversed your_source_file.txt your_destination_file.txt
+
+3. To run the program by writing the output of 'strace' command into "output.txt" file and copying and 
+writing the reversed contents of the input file into the destination file, command:
+$ strace -o output.txt ./FileCopyReversed your_source_file.txt your_destination_file.txt
